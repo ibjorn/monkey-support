@@ -1,41 +1,74 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.darkMode && 'dark'">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Fonts -->
+    {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Add Livewire Style -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Add Livewire Style -->
+    @livewireStyles
+</head>
+
+<body class="font-sans antialiased">
+    <div class="flex flex-col justify-between min-h-screen bg-white dark:bg-gray-900">
+
+        <header class="w-full">
             @include('layouts.navigation')
+        </header>
 
-            <!-- Page Heading -->
-            @if (isset($header))
+        {{-- @if (isset($header))
                 <header class="bg-white shadow dark:bg-gray-800">
                     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
-            @endif
+            @endif --}}
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-        
-        <!-- Add Livewire Script -->
-        @livewireScripts
-    </body>
+        <main class="grow">
+            {{ $slot }}
+        </main>
+
+        <footer class="bg-white dark:bg-gray-800">
+            <div class="max-w-screen-xl p-4 py-6 mx-auto md:p-8 lg:p-10 lg:py-8">
+
+                <hr class="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-4">
+
+                <div class="text-center">
+
+                    <a href="#"
+                        class="flex items-center justify-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
+                        <x-application-logo
+                            class="block w-auto h-10 text-gray-800 fill-current dark:text-gray-200 sm:h-12" />
+                        Coding Monkeys Support
+                    </a>
+
+                    <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
+                        © {{ now()->year }} Coding Monkeys™. All Rights Reserved.
+                    </span>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Add Livewire Script -->
+    @livewireScripts
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('darkMode', localStorage.getItem('colorMode') === 'light')
+        })
+    </script>
+</body>
+
 </html>
