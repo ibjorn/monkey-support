@@ -20,20 +20,20 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" x-data="{ 'showModal': false }" @keydown.escape="showModal = false" x-cloak>
     <div class="flex flex-col justify-between min-h-screen bg-white dark:bg-gray-900">
 
         <header class="w-full">
             @include('layouts.navigation')
         </header>
 
-        {{-- @if (isset($header))
-                <header class="bg-white shadow dark:bg-gray-800">
-                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif --}}
+        @if (isset($header))
+            <header class="bg-white shadow dark:bg-gray-800">
+                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
+        @endif
 
         <main class="grow">
             {{ $slot }}
@@ -46,15 +46,16 @@
 
                 <div class="text-center">
 
-                    <a href="#"
+                    <a href="{{ route('home') }}"
                         class="flex items-center justify-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
                         <x-application-logo
-                            class="block w-auto h-10 text-gray-800 fill-current dark:text-gray-200 sm:h-12" />
-                        Coding Monkeys Support
+                            class="block w-auto text-gray-800 fill-current h-7 dark:text-gray-200 sm:h-10" />
+                        <span class="text-2xl font-bold text-gray-800 -tracking-widest dark:text-gray-200">Monkey
+                            Support</span>
                     </a>
 
                     <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
-                        © {{ now()->year }} Coding Monkeys™. All Rights Reserved.
+                        © {{ now()->year }} Monkey Support™. All Rights Reserved.
                     </span>
 
                 </div>
@@ -64,11 +65,6 @@
 
     <!-- Add Livewire Script -->
     @livewireScripts
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('darkMode', localStorage.getItem('colorMode') === 'light')
-        })
-    </script>
 </body>
 
 </html>

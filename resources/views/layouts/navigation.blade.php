@@ -3,10 +3,11 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
 
         <!-- Logo -->
-        <div class="flex items-center pr-2">
+        <div class="flex items-center justify-between p1-2">
             <a href="{{ route('dashboard') }}">
                 <x-application-logo class="block w-auto h-10 text-gray-800 fill-current dark:text-gray-200 sm:h-12" />
             </a>
+            <span class="text-4xl font-bold text-gray-800 -tracking-widest dark:text-gray-200">Monkey Support</span>
         </div>
 
         <div class="flex items-center pl-2 lg:order-2">

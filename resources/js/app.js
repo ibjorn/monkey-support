@@ -8,4 +8,6 @@ livewire_hot_reload()
 
 window.Alpine = Alpine
 
+Alpine.store('darkMode', localStorage.getItem('colorMode') === 'light')
+
 Alpine.start()
