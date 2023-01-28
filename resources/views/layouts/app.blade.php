@@ -47,7 +47,7 @@
                 <div class="text-center">
 
                     <a href="{{ route('home') }}"
-                        class="flex items-center justify-center mb-3 text-2xl font-semibold text-gray-900 dark:text-white">
+                        class="flex items-center justify-center mb-1 text-2xl font-semibold text-gray-900 dark:text-white">
                         <x-application-logo
                             class="block w-auto text-gray-800 fill-current h-7 dark:text-gray-200 sm:h-10" />
                         <span class="text-2xl font-bold text-gray-800 -tracking-widest dark:text-gray-200">Monkey
@@ -61,6 +61,20 @@
                 </div>
             </div>
         </footer>
+
+        @auth
+            <x-utility.modal :showModal title="Support">
+                <p class="text-gray-900 dark:text-gray-200">
+                    Hello world!
+                </p>
+            </x-utility.modal>
+        @else
+            <x-utility.modal :showModal title="Login">
+                <p class="text-gray-900 dark:text-gray-200">
+                    Hello world!
+                </p>
+            </x-utility.modal>
+        @endauth
     </div>
 
     <!-- Add Livewire Script -->

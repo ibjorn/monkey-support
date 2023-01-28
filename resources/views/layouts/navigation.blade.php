@@ -17,8 +17,15 @@
             </div>
 
             {{-- button --}}
-            <a href="#"
-                class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-medium text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">Register</a>
+            @auth
+                <button @click="showModal = true"
+                    class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">Support
+                </button>
+            @else
+                <button @click="showModal = true"
+                    class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">Login
+                </button>
+            @endauth
 
             {{-- hamburger menu --}}
             <div class="flex items-center -mr-2 lg:hidden">
@@ -81,12 +88,15 @@
                 <li>
                     <x-nav.link :href="route('home')" :active="request()->routeIs('home')">Home</x-nav.link>
                 </li>
-                <li>
-                    <x-nav.link :href="route('login')" :active="request()->routeIs('login')">Login</x-nav.link>
-                </li>
-                <li>
-                    <x-nav.link :href="route('register')" :active="request()->routeIs('register')">Register</x-nav.link>
-                </li>
+                @auth
+                    <li>
+                        <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-nav.link>
+                    </li>
+                @else
+                    <li>
+                        <x-nav.link :href="route('register')" :active="request()->routeIs('register')">Register</x-nav.link>
+                    </li>
+                @endauth
             </ul>
         </div>
 
