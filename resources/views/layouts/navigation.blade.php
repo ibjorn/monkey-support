@@ -5,9 +5,11 @@
         <!-- Logo -->
         <div class="flex items-center justify-between p1-2">
             <a href="{{ route('dashboard') }}">
-                <x-application-logo class="block w-auto h-10 text-gray-800 fill-current dark:text-gray-200 sm:h-12" />
+                <x-application-logo class="block w-auto text-gray-800 fill-current h-7 dark:text-gray-200 sm:h-12" />
             </a>
-            <span class="text-4xl font-bold text-gray-800 -tracking-widest dark:text-gray-200">Monkey Support</span>
+            <span class="text-lg font-bold text-gray-800 -tracking-widest dark:text-gray-200 sm:text-4xl">
+                Monkey Support
+            </span>
         </div>
 
         <div class="flex items-center pl-2 lg:order-2">
@@ -47,7 +49,7 @@
                     <x-nav.dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:hover:text-gray-300">
+                                class="inline-flex items-center px-3 py-2 font-semibold leading-4 text-gray-900 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-yellow-500 focus:outline-none dark:bg-gray-400 dark:hover:text-white">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
