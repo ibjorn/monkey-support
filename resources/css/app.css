@@ -5,3 +5,20 @@
 [x-cloak] {
     display: none !important;
 }
+
+/* background colors for statuses */
+.bg-green {
+    background-color: #86efac;
+}
+
+.bg-blue {
+    background-color: #93c5fd;
+}
+
+.bg-yellow {
+    background-color: #fde047;
+}
+
+.bg-gray {
+    background-color: #d1d5db;
+}

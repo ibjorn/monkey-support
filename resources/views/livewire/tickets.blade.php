@@ -68,7 +68,7 @@
                         <x-table.body>
 
                             <x-slot name="head">
-                                <tr>
+                                <x-table.row>
                                     <x-table.heading>
                                         Ticket ID
                                     </x-table.heading>
@@ -81,14 +81,14 @@
                                     <x-table.heading>
                                         Action
                                     </x-table.heading>
-                                </tr>
+                                </x-table.row>
                             </x-slot>
 
                             <x-slot name="body">
 
                                 @if (count($tickets) > 0)
                                     @foreach ($tickets as $ticket)
-                                        <tr>
+                                        <x-table.row :wire:key="$ticket->id">
                                             <x-table.cell>
                                                 <div class="flex items-center">
                                                     <div class="ml-4">
@@ -107,7 +107,8 @@
 
                                             <x-table.cell>
                                                 <div>
-                                                    {{ $ticket->status }}
+                                                    <span
+                                                        class="bg-{{ $ticket->status_color }} inline-block whitespace-nowrap rounded-full py-1 px-2.5 text-center align-baseline text-xs font-bold capitalize leading-none text-white">{{ $ticket->status }}</span>
                                                 </div>
                                             </x-table.cell>
 
@@ -120,16 +121,16 @@
                                                 </x-button.secondary>
                                             </x-table.cell>
 
-                                        </tr>
+                                        </x-table.row>
                                     @endforeach
                                 @else
-                                    <tr>
+                                    <x-table.row>
                                         <x-table.cell>
                                             <div>
                                                 Not tickets found.
                                             </div>
                                         </x-table.cell>
-                                    </tr>
+                                    </x-table.row>
                                 @endif
                             </x-slot>
                         </x-table.body>
