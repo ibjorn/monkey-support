@@ -20,13 +20,9 @@
 
             {{-- button --}}
             @auth
-                <button @click="showModal = true"
-                    class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">Support
-                </button>
-            @else
-                <button @click="showModal = true"
-                    class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">Login
-                </button>
+                <x-button.primary type="button" @click="showModal = true">
+                    Support
+                </x-button.primary>
             @endauth
 
             {{-- hamburger menu --}}
@@ -94,7 +90,13 @@
                     <li>
                         <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-nav.link>
                     </li>
+                    <li>
+                        <x-nav.link :href="route('ticket')" :active="request()->routeIs('ticket')">My Tickets</x-nav.link>
+                    </li>
                 @else
+                    <li>
+                        <x-nav.link :href="route('login')" :active="request()->routeIs('login')">Login</x-nav.link>
+                    </li>
                     <li>
                         <x-nav.link :href="route('register')" :active="request()->routeIs('register')">Register</x-nav.link>
                     </li>

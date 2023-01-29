@@ -9,7 +9,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -28,11 +27,11 @@
         </header>
 
         @if (isset($header))
-            <header class="bg-white shadow dark:bg-gray-800">
+            <section class="bg-white shadow dark:bg-gray-800">
                 <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
-            </header>
+            </section>
         @endif
 
         <main class="grow">
@@ -63,16 +62,8 @@
         </footer>
 
         @auth
-            <x-utility.modal :showModal title="Support">
-                <p class="text-gray-900 dark:text-gray-200">
-                    Hello world!
-                </p>
-            </x-utility.modal>
-        @else
-            <x-utility.modal :showModal title="Login">
-                <p class="text-gray-900 dark:text-gray-200">
-                    Hello world!
-                </p>
+            <x-utility.modal :showModal title="Submit Ticket">
+                <x-tickets.add-update />
             </x-utility.modal>
         @endauth
     </div>

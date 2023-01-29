@@ -2,7 +2,7 @@
 
 <div x-show="showModal" {{-- class="bg-white/70 backdrop-blur-md" 
             :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showModal }" --}}
-    class="fixed inset-0 z-50 flex items-center justify-center transition-all transform bg-white/70 backdrop-blur-md"
+    class="fixed inset-0 z-50 flex items-center justify-center transition-all transform bg-white/70 backdrop-blur-md dark:bg-gray-800/70"
     x-on:click="show = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
     x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0">

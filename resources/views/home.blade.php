@@ -16,15 +16,6 @@
                             class="rounded-lg bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-0 lg:px-5 lg:py-2.5">
                             Get Support
                         </button>
-                    @else
-                        <a href="#" @click="showModal = true"
-                            class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold text-center text-gray-900 border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 sm:w-auto">
-                            Login
-                        </a>
-                        <a href="{{ route('register') }}"
-                            class="inline-flex items-center justify-center w-full px-5 py-3 mb-2 mr-2 text-sm font-semibold text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto">
-                            Register
-                        </a>
                     @endauth
                 </div>
             </div>
