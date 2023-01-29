@@ -44,11 +44,13 @@ class Tickets extends Component
                 'subject' => $this->subject,
                 'description' => $this->description,
             ]);
-            session()->flash('success', 'Ticket created successfully');
+            // session()->flash('success', 'Ticket created successfully');
+            $this->notify('Ticket created successfully');
             $this->resetFields();
             $this->addTicket = false;
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something went wrong');
+            // session()->flash('error', 'Something went wrong');
+            $this->notify('Something went wrong');
         }
     }
 
@@ -57,7 +59,8 @@ class Tickets extends Component
         try {
             $ticket = Ticket::findOrFail($id);
             if(!$ticket) {
-                session()->flash('error', 'Ticket not found');
+                // session()->flash('error', 'Ticket not found');
+                $this->notify('Ticket not found');
             } else {
                 $this->ticket_id = $ticket->id;
                 $this->subject = $ticket->subject;
@@ -66,7 +69,8 @@ class Tickets extends Component
                 $this->addTicket = false;
             }
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something went wrong');
+            // session()->flash('error', 'Something went wrong');
+            $this->notify('Something went wrong');
         }
     }
 
@@ -78,11 +82,13 @@ class Tickets extends Component
                 'subject' => $this->subject,
                 'description' => $this->description,
             ]);
-            session()->flash('success', 'Ticket updated successfully');
+            // session()->flash('success', 'Ticket updated successfully');
+            $this->notify('Ticket updated successfully');
             $this->resetFields();
             $this->updateTicket = false;
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something went wrong');
+            // session()->flash('error', 'Something went wrong');
+            $this->notify('Something went wrong');
         }
     }
 
@@ -97,9 +103,11 @@ class Tickets extends Component
     {
         try {
             Ticket::find($id)->delete();
-            session()->flash('success', 'Ticket deleted successfully');
+            // session()->flash('success', 'Ticket deleted successfully');
+            $this->notify('Ticket deleted successfully');
         } catch (\Exception $ex) {
-            session()->flash('error', 'Something went wrong');
+            // session()->flash('error', 'Something went wrong');
+            $this->notify('Something went wrong');
         }
     }
 

@@ -68,6 +68,8 @@
         @endauth
     </div>
 
+    <x-notification />
+
     <!-- Add Livewire Script -->
     @livewireScripts
 </body>

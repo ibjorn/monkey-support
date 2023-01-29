@@ -10,7 +10,7 @@
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-col items-center max-w-lg mx-auto">
-                        <div class="max-w-lg mx-auto">
+                        {{-- <div class="max-w-lg mx-auto">
                             @if (session()->has('success'))
                                 <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
                                     <svg class="inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                             @endif
-                        </div>
+                        </div> --}}
                         <div class="max-w-lg mx-auto">
                             @if (!$addTicket)
                                 <x-button.primary wire:click="addTicket">
