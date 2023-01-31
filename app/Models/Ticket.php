@@ -19,7 +19,7 @@ class Ticket extends Model
     const STATUSES = [
         'new' => 'New',
         'open' => 'Open',
-        'waiting' => 'Waiting',
+        'responded' => 'Responded',
         'closed' => 'Closed',
     ];
 
@@ -28,7 +28,7 @@ class Ticket extends Model
         return [
             'new' => 'green',
             'open' => 'blue',
-            'waiting' => 'yellow',
+            'responded' => 'yellow',
         ][$this->status] ?? 'gray';
     }
 

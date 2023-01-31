@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('reply');
-            $table->string('status')->default('waiting');
             $table->timestamps();
         });
     }

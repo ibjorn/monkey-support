@@ -114,14 +114,16 @@
                                             </x-table.cell>
 
                                             <x-table.cell>
-                                                <x-button.primary wire:click="editTicket({{ $ticket->id }})">
+                                                <x-button.primary wire:click="editTicket({{ $ticket->id }})"
+                                                    class="px-2 py-1 text-sm lg:px-3 lg:py-1.5">
                                                     Edit
                                                 </x-button.primary>
                                                 <a href="{{ url('/ticket/' . $ticket->id) }}"
-                                                    class="rounded-lg border-2 border-gray-900 bg-transparent px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-5 lg:py-2.5">
+                                                    class="rounded-lg border-2 border-gray-900 bg-transparent px-2 py-1 text-xs font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-3 lg:py-1.5">
                                                     View
                                                 </a>
-                                                <x-button.danger wire:click="deleteTicket({{ $ticket->id }})">
+                                                <x-button.danger wire:click="deleteTicket({{ $ticket->id }})"
+                                                    class="px-2 py-1 text-sm lg:px-3 lg:py-1.5">
                                                     Delete
                                                 </x-button.danger>
                                             </x-table.cell>

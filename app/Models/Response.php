@@ -13,22 +13,7 @@ class Response extends Model
         'user_id',
         'ticket_id',
         'reply',
-        'status',
     ];
-
-    const STATUSES = [
-        'waiting' => 'waiting',
-        'responded' => 'responded',
-        'closed' => 'Closed',
-    ];
-
-    public function getStatusColorAttribute()
-    {
-        return [
-            'waiting' => 'orange',
-            'responded' => 'blue',
-        ][$this->status] ?? 'gray';
-    }
 
     public function user()
     {
