@@ -63,7 +63,8 @@
 
         @auth
             <x-utility.modal :showModal title="Submit Ticket">
-                <x-tickets.add-update />
+                {{-- <x-tickets.add-update /> --}}
+                <livewire:components.ticket-form />
             </x-utility.modal>
         @endauth
     </div>
