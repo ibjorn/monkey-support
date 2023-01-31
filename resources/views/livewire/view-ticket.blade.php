@@ -60,12 +60,10 @@
                                 @endforeach
                             </div>
                         @else
-                            <div>
+                            <div class="pt-6 text-gray-900 dark:text-white">
                                 There's been no responses to this ticket.
                             </div>
                         @endif
-
-
 
                     </div>
                 </div>
