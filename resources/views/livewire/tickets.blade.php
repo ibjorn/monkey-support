@@ -10,35 +10,6 @@
             <div class="overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-col items-center max-w-lg mx-auto">
-                        {{-- <div class="max-w-lg mx-auto">
-                            @if (session()->has('success'))
-                                <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-                                    <svg class="inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <div>
-                                        <span class="font-medium">Success!</span> {{ session()->get('success') }}
-                                    </div>
-                                </div>
-                            @endif
-                            @if (session()->has('error'))
-                                <div class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg"
-                                    role="alert">
-                                    <svg class="inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <div>
-                                        <span class="font-medium">Warning!</span> {{ session()->get('error') }}
-                                    </div>
-                                </div>
-                            @endif
-                        </div> --}}
                         <div class="max-w-lg mx-auto">
                             @if (!$addTicket)
                                 <x-button.primary wire:click="addTicket">
