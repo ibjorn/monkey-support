@@ -40,7 +40,7 @@ class Tickets extends Component
         $this->validate();
         try {
             Ticket::create([
-                'user_id' => Auth::user()->id,
+                'user_id' => Auth::id(),
                 'subject' => $this->subject,
                 'description' => $this->description,
             ]);

@@ -5,30 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ticket extends Model
+class Response extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'subject',
-        'description',
+        'ticket_id',
+        'reply',
         'status',
     ];
 
     const STATUSES = [
-        'new' => 'New',
-        'open' => 'Open',
-        'waiting' => 'Waiting',
+        'waiting' => 'waiting',
+        'responded' => 'responded',
         'closed' => 'Closed',
     ];
 
     public function getStatusColorAttribute()
     {
         return [
-            'new' => 'green',
-            'open' => 'blue',
-            'waiting' => 'yellow',
+            'waiting' => 'orange',
+            'responded' => 'blue',
         ][$this->status] ?? 'gray';
     }
 
@@ -37,8 +35,8 @@ class Ticket extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function responses()
+    public function ticket()
     {
-        return $this->belongsTo(Response::class);
+        return $this->belongsTo(Ticket::class);
     }
 }

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function avatar()
+    {
+        return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=1F2937&background=FACC15';;
+    }
 }

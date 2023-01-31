@@ -7,7 +7,7 @@
 
     <section class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+            <div class="overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-col items-center max-w-lg mx-auto">
                         {{-- <div class="max-w-lg mx-auto">
@@ -47,7 +47,7 @@
                             @endif
                         </div>
                         <div
-                            class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:max-w-md sm:rounded-lg">
+                            class="w-full px-6 py-4 mt-6 overflow-hidden bg-white dark:bg-gray-800 sm:max-w-md sm:rounded-lg">
 
                             @if ($addTicket || $updateTicket)
                                 <x-tickets.add-update :action="$addTicket ? 'submit' : 'update'" />
@@ -107,8 +107,9 @@
 
                                             <x-table.cell>
                                                 <div>
-                                                    <span
-                                                        class="bg-{{ $ticket->status_color }} inline-block whitespace-nowrap rounded-full py-1 px-2.5 text-center align-baseline text-xs font-bold capitalize leading-none text-white">{{ $ticket->status }}</span>
+                                                    <x-utility.badge :badgeColor="$ticket->status_color">
+                                                        {{ $ticket->status }}
+                                                    </x-utility.badge>
                                                 </div>
                                             </x-table.cell>
 
@@ -116,9 +117,13 @@
                                                 <x-button.primary wire:click="editTicket({{ $ticket->id }})">
                                                     Edit
                                                 </x-button.primary>
-                                                <x-button.secondary wire:click="deleteTicket({{ $ticket->id }})">
+                                                <a href="{{ url('/ticket/' . $ticket->id) }}"
+                                                    class="rounded-lg border-2 border-gray-900 bg-transparent px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-5 lg:py-2.5">
+                                                    View
+                                                </a>
+                                                <x-button.danger wire:click="deleteTicket({{ $ticket->id }})">
                                                     Delete
-                                                </x-button.secondary>
+                                                </x-button.danger>
                                             </x-table.cell>
 
                                         </x-table.row>
