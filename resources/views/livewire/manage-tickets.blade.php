@@ -1,11 +1,9 @@
 <div>
-    <section class="py-2">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h3 class="text-xl text-gray-800 font-regular dark:text-gray-100">
-                Manage Tickets
-            </h3>
-        </div>
-    </section>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+            {{ __('Manage Tickets') }}
+        </h2>
+    </x-slot>
 
     <section class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
