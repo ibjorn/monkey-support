@@ -46,7 +46,11 @@ class ViewTicket extends Component
                 'ticket_id' => $this->ticket->id,
                 'reply' => $this->reply,
             ]);
-            $this->ticket->update(['status' => 'open']);
+            if (Auth::user()->is_admin) {
+                $this->ticket->update(['status' => 'responded']);
+            } else {
+                $this->ticket->update(['status' => 'open']);
+            }
             $this->notify('Response added successfully');
             $this->resetFields();
             $this->addResponse = false;

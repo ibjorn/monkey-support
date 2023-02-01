@@ -91,6 +91,9 @@
                         <li>
                             <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-nav.link>
                         </li>
+                        <li>
+                            <x-nav.link :href="route('manage-tickets')" :active="request()->routeIs('manage-tickets')">Manage Tickets</x-nav.link>
+                        </li>
                     @endcan
                     <li>
                         <x-nav.link :href="route('ticket')" :active="request()->routeIs('ticket')">My Tickets</x-nav.link>
@@ -110,9 +113,26 @@
         <div :class="{ 'block': open, 'hidden': !open }"
             class="relative hidden w-full h-full bg-white z-100 dark:bg-gray-800 lg:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <x-nav.responsive-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-nav.responsive-link>
+                @auth
+                    @can('admin-rights')
+                        <x-nav.responsive-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav.responsive-link>
+                        <x-nav.responsive-link :href="route('manage-tickets')" :active="request()->routeIs('manage-tickets')">
+                            {{ __('Manage Tickets') }}
+                        </x-nav.responsive-link>
+                    @endcan
+                    <x-nav.responsive-link :href="route('ticket')" :active="request()->routeIs('ticket')">
+                        {{ __('My Tickets') }}
+                    </x-nav.responsive-link>
+                @else
+                    <x-nav.responsive-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-nav.responsive-link>
+                    <x-nav.responsive-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-nav.responsive-link>
+                @endauth
             </div>
 
             @auth

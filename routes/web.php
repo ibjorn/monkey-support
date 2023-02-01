@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Tickets;
 use App\Http\Livewire\ViewTicket;
+use App\Http\Livewire\ManageTickets;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/ticket', Tickets::class)->name('ticket');
     Route::get('/ticket/{id}', ViewTicket::class)->name('ticket.response');
+
+    Route::get('/manage-tickets', ManageTickets::class)->name('manage-tickets');
 });
 
 require __DIR__.'/auth.php';

@@ -10,10 +10,17 @@
             <div class="overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="py-2">
-                        <a href="{{ url('/ticket/') }}"
-                            class="rounded-lg border-2 border-gray-900 bg-transparent px-2 py-1 text-xs font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-3 lg:py-1.5">
-                            Back
-                        </a>
+                        @can('admin-rights')
+                            <a href="{{ url('/manage-tickets/') }}"
+                                class="rounded-lg border-2 border-gray-900 bg-transparent px-2 py-1 text-xs font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-3 lg:py-1.5">
+                                Back
+                            </a>
+                        @else
+                            <a href="{{ url('/ticket/') }}"
+                                class="rounded-lg border-2 border-gray-900 bg-transparent px-2 py-1 text-xs font-semibold text-gray-900 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:border-gray-200 dark:bg-yellow-600 dark:text-gray-200 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 sm:mr-2 lg:mr-1 lg:px-3 lg:py-1.5">
+                                Back
+                            </a>
+                        @endcan
                     </div>
                     <div class="flex flex-col items-start max-w-lg mx-auto">
                         <div class="w-full px-6 py-2">

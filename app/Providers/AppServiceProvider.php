@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', $message);
+        });
+
+        Builder::macro('search', function ($field, $string) {
+            return $string ? $this->where($field, 'like', '%'.$string.'%') : $this;
         });
 
     }

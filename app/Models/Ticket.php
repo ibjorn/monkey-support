@@ -32,6 +32,11 @@ class Ticket extends Model
         ][$this->status] ?? 'gray';
     }
 
+    public function getDateForHumansAttribute()
+    {
+        return $this->created_at->format('d M, Y - H:i:s');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
