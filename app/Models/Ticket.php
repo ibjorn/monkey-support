@@ -39,6 +39,6 @@ class Ticket extends Model
 
     public function responses()
     {
-        return $this->belongsTo(Response::class);
+        return $this->hasMany(Response::class);
     }
 }
