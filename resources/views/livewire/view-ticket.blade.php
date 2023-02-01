@@ -35,6 +35,11 @@
                                 Close Ticket
                             </x-button.primary>
                         </div>
+                        <div class="flex justify-end w-full px-6">
+                            <span class="text-xs text-gray-400 dark:text-gray-200">
+                                *reply to re-open
+                            </span>
+                        </div>
 
                         <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-white dark:bg-gray-800">
                             <x-responses.add />

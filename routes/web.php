@@ -21,6 +21,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', function () {
+    if (Gate::denies('admin-rights')) {
+        return redirect()->route('home');
+    }
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

@@ -20,7 +20,7 @@ class TicketFactory extends Factory
         $date = fake()->unique()->dateTimeBetween('-7 days', 'now');
         
         return [
-            'subject' => fake()->title(),
+            'subject' => fake()->catchPhrase(),
             'description' => fake()->paragraphs(1, true),
             'status'=> Arr::random(['new', 'open', 'responded', 'closed']),
             'created_at' => $date,

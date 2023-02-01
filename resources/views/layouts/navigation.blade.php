@@ -87,9 +87,11 @@
                     <x-nav.link :href="route('home')" :active="request()->routeIs('home')">Home</x-nav.link>
                 </li>
                 @auth
-                    <li>
-                        <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-nav.link>
-                    </li>
+                    @can('admin-rights')
+                        <li>
+                            <x-nav.link :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-nav.link>
+                        </li>
+                    @endcan
                     <li>
                         <x-nav.link :href="route('ticket')" :active="request()->routeIs('ticket')">My Tickets</x-nav.link>
                     </li>

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use App\Models\User;
+use App\Models\Ticket;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +27,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin-rights', function (User $user) {
+            return $user->is_admin === 1;
+        });
+
+        Gate::define('view-ticket', function (User $user, Ticket $ticket) {
+            return $user->id === $ticket->user_id || $user->is_admin === 1;
+        });
+
+        Gate::define('respond-ticket', function (User $user, Ticket $ticket) {
+            return $user->id === $ticket->user_id || $user->is_admin === 1;
+        });
     }
 }

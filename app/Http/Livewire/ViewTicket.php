@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Ticket;
 use App\Models\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class ViewTicket extends Component
@@ -27,6 +28,10 @@ class ViewTicket extends Component
 
     public function addResponse()
     {
+        if (Gate::denies('respond-ticket', $this->ticket)) {
+            abort(403);
+        }
+
         $this->resetFields();
         $this->addResponse = true;
         $this->updateResponse = false;
@@ -83,6 +88,11 @@ class ViewTicket extends Component
         ->select('id', 'user_id', 'reply')
         ->latest()
         ->get();
+
+        if (Gate::denies('view-ticket', $this->ticket)) {
+            abort(403);
+        }
+
         return view('livewire.view-ticket', [
             'responses' => $responses
         ]);
