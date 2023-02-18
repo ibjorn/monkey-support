@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ticket;
+use App\Enums\TicketStatus;
 use App\Models\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -47,9 +48,9 @@ class ViewTicket extends Component
                 'reply' => $this->reply,
             ]);
             if (Auth::user()->is_admin) {
-                $this->ticket->update(['status' => 'responded']);
+                $this->ticket->update(['status' => TicketStatus::Responded]);
             } else {
-                $this->ticket->update(['status' => 'open']);
+                $this->ticket->update(['status' => TicketStatus::Open]);
             }
             $this->notify('Response added successfully');
             $this->resetFields();
@@ -64,6 +65,8 @@ class ViewTicket extends Component
         $this->addResponse = false;
         $this->updateResponse = false;
         $this->resetFields();
+
+        return redirect()->route('ticket');
     }
 
     public function deleteResponse($id)
@@ -79,7 +82,7 @@ class ViewTicket extends Component
     public function closeTicket()
     {
         try {
-            $this->ticket->update(['status' => 'closed']);
+            $this->ticket->update(['status' => TicketStatus::Closed]);
             $this->notify('Ticket closed successfully');
         } catch (Exception $ex) {
             $this->notify('Something went wrong');

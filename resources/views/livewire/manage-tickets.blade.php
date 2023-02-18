@@ -32,9 +32,8 @@
                                     <x-input.select wire:model="filters.status" id="filter-status"
                                         class="min-w-min px-2 py-1 text-sm lg:px-3 lg:py-1.5">
                                         <option value="" disabled>Status...</option>
-
-                                        @foreach ($statuses as $value => $label)
-                                            <option value="{{ $value }}">{{ $label }}</option>
+                                        @foreach (App\Enums\TicketStatus::statuses() as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </x-input.select>
                                 </div>
@@ -55,11 +54,7 @@
                                     </x-input.select>
                                 </div>
                             </div>
-
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -120,7 +115,7 @@
 
                                             <x-table.cell>
                                                 <div>
-                                                    <x-utility.badge :badgeColor="$ticket->status_color">
+                                                    <x-utility.badge :badgeColor="App\Enums\TicketStatus::color($ticket->status)">
                                                         {{ $ticket->status }}
                                                     </x-utility.badge>
                                                 </div>
@@ -183,7 +178,6 @@
                                         </div>
                                     </div>
                                 </x-utility.alert>
-
 
                             </x-slot>
                         </x-table.body>

@@ -36,9 +36,11 @@ class TicketForm extends Component
                 'subject' => $this->subject,
                 'description' => $this->description,
             ]);
+            
             $this->notify('Ticket created successfully');
             $this->resetFields();
             $this->submitTicket = false;
+
         } catch (\Exception $ex) {
             $this->notify('Something went wrong');
         }
@@ -48,6 +50,8 @@ class TicketForm extends Component
     {
         $this->submitTicket = false;
         $this->resetFields();
+
+        return redirect()->route('ticket');
     }
 
     public function render()

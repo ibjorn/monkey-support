@@ -77,7 +77,11 @@
                                 @endif
                             </x-slot>
                         </x-table.body>
-                        {{ $users->links() }}
+                        <div class="text-gray-800 dark:text-gray-300">
+                            <div class="mt-4">
+                                {{ $users->links('components.pagination.tailwind') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

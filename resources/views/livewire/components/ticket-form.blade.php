@@ -11,7 +11,7 @@
         <x-input.error :messages="$errors->get('description')" class="mt-2" />
     </div>
     <div class="mt-4">
-        <x-button.primary wire:click.prevent="saveTicket()">
+        <x-button.primary wire:click.prevent="saveTicket()" x-on:click="showModal = false">
             Submit
         </x-button.primary>
     </div>
