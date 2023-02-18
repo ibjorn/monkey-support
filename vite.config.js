@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 import livewire from '@defstudio/vite-livewire-plugin'
 
-const host = 'cm-tickets.local'
+const host = 'monkey-support.local'
 
 export default defineConfig({
     server: {

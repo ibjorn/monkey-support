@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ticket;
+use App\Enums\TicketStatus;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -77,7 +78,7 @@ class Tickets extends Component
             Ticket::whereId($this->ticket_id)->update([
                 'subject' => $this->subject,
                 'description' => $this->description,
-                'status' => 'open'
+                'status' => TicketStatus::Open
             ]);
             $this->notify('Ticket updated successfully');
             $this->resetFields();
@@ -92,6 +93,8 @@ class Tickets extends Component
         $this->addTicket = false;
         $this->updateTicket = false;
         $this->resetFields();
+
+        return redirect()->route('ticket');
     }
 
     public function deleteTicket($id)

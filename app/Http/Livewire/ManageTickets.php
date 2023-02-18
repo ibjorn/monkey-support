@@ -39,7 +39,6 @@ class ManageTickets extends Component
     public function getRowsQueryProperty()
     {
         $query = Ticket::query()
-        // ->orderBy('created_at', 'desc')
         ->when($this->filters['status'], fn ($query, $status) => $query->where('status', $status))
         ->when($this->filters['search'], fn ($query, $search) => $query
             ->where('id', 'like', '%'.$search.'%')
@@ -70,12 +69,9 @@ class ManageTickets extends Component
         if (Gate::denies('admin-rights')) {
             abort(403);
         }
-        
-        $statuses = Ticket::STATUSES;
 
         return view('livewire.manage-tickets', [
-            'tickets' => $this->rows,
-            'statuses' => $statuses
+            'tickets' => $this->rows
         ]);
     }
 }

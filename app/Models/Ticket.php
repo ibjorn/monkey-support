@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\TicketStatus;
 
 class Ticket extends Model
 {
@@ -16,21 +17,9 @@ class Ticket extends Model
         'status',
     ];
 
-    const STATUSES = [
-        'new' => 'New',
-        'open' => 'Open',
-        'responded' => 'Responded',
-        'closed' => 'Closed',
+    protected $casts = [
+        'status' => TicketStatus::class
     ];
-
-    public function getStatusColorAttribute()
-    {
-        return [
-            'new' => 'green',
-            'open' => 'blue',
-            'responded' => 'yellow',
-        ][$this->status] ?? 'gray';
-    }
 
     public function getDateForHumansAttribute()
     {
