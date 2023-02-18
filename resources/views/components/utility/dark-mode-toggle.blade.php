@@ -1,5 +1,5 @@
-<div class="relative inline-block w-12 select-none" x-data @click="$store.darkMode = ! $store.darkMode">
-    <div :class="{ 'translate-x-full': $store.darkMode }"
+<div class="relative inline-block w-12 select-none" x-data @click="$store.darkMode.toggle()">
+    <div :class="{ 'translate-x-full': $store.darkMode.on }"
         class="absolute z-10 block w-6 h-6 transition duration-500 transform bg-white border-2 border-gray-400 rounded-full cursor-pointer dark:bg-gray-600">
     </div>
 

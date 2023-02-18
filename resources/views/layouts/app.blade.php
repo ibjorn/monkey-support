@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.darkMode && 'dark'">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.darkMode.on && 'dark'">
 
 <head>
     <meta charset="utf-8">
@@ -63,8 +63,9 @@
 
         @auth
             <x-utility.modal :showModal title="Submit Ticket">
-                {{-- <x-tickets.add-update /> --}}
+
                 <livewire:components.ticket-form />
+
             </x-utility.modal>
         @endauth
     </div>

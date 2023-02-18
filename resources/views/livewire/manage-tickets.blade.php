@@ -173,11 +173,11 @@
 
                                         <div class="flex justify-end mt-6">
                                             <x-button.secondary x-on:click="$dispatch('close')" type="button">
-                                                {{ __('Cancel') }}
+                                                Cancel
                                             </x-button.secondary>
 
                                             <x-button.danger wire:click="deleteTicket({{ $deleteTicketId }})"
-                                                x-on:click="$dispatch('close')">>
+                                                x-on:click="$dispatch('close')" class="ml-2">
                                                 Trash It
                                             </x-button.danger>
                                         </div>
