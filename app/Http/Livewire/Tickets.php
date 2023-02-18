@@ -11,7 +11,7 @@ class Tickets extends Component
 {
     use WithPagination;
 
-    public $subject, $description, $ticket_id, $updateTicket = false, $addTicket = false;
+    public $subject, $description, $ticket_id, $updateTicket = false, $addTicket = false, $ticketToDelete;
 
     protected $listeners = [
         'deleteTicketListener' => 'deleteTicket'

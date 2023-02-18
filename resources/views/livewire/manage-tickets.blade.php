@@ -70,7 +70,7 @@
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="px-6 pb-6">
                     <div class="container mx-auto">
-                        <x-table.body>
+                        <x-table.body x-data="ticketId = @entangle('deleteTicketId')">
 
                             <x-slot name="head">
                                 <x-table.row>
@@ -140,34 +140,12 @@
                                                     </a>
 
                                                     <x-button.danger x-data=""
-                                                        x-on:click.prevent="$dispatch('open-modal', 'confirm-ticket-deletion')"
+                                                        x-on:click.prevent="$dispatch('open-modal', 'confirm-ticket-deletion'); $wire.set('deleteTicketId', {{ $ticket->id }})"
                                                         class="px-2 py-1 text-xs lg:px-3 lg:py-1.5">
-                                                        {{ __('Delete') }}</x-button.danger>
+                                                        Delete
+                                                    </x-button.danger>
 
-                                                    <x-utility.alert name="confirm-ticket-deletion">
-                                                        <div class="p-6">
-                                                            <h2
-                                                                class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                                                {{ __('Are you sure you want to delete this ticket?') }}
-                                                            </h2>
 
-                                                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                                                {{ __('This action is irreversible.') }}
-                                                            </p>
-
-                                                            <div class="flex justify-end mt-6">
-                                                                <x-button.secondary x-on:click="$dispatch('close')"
-                                                                    type="button">
-                                                                    {{ __('Cancel') }}
-                                                                </x-button.secondary>
-
-                                                                <x-button.danger
-                                                                    wire:click="deleteTicket({{ $ticket->id }})">
-                                                                    Trash It
-                                                                </x-button.danger>
-                                                            </div>
-                                                        </div>
-                                                    </x-utility.alert>
                                                 </div>
                                             </x-table.cell>
 
@@ -182,10 +160,37 @@
                                         </x-table.cell>
                                     </x-table.row>
                                 @endif
+
+                                <x-utility.alert name="confirm-ticket-deletion">
+                                    <div class="p-6">
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                            {{ __('Are you sure you want to delete this ticket?') }}
+                                        </h2>
+
+                                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                            {{ __('This action is irreversible.') }}
+                                        </p>
+
+                                        <div class="flex justify-end mt-6">
+                                            <x-button.secondary x-on:click="$dispatch('close')" type="button">
+                                                {{ __('Cancel') }}
+                                            </x-button.secondary>
+
+                                            <x-button.danger wire:click="deleteTicket({{ $deleteTicketId }})"
+                                                x-on:click="$dispatch('close')">>
+                                                Trash It
+                                            </x-button.danger>
+                                        </div>
+                                    </div>
+                                </x-utility.alert>
+
+
                             </x-slot>
                         </x-table.body>
                         <div class="text-gray-800 dark:text-gray-300">
-                            {{ $tickets->links() }}
+                            <div class="mt-4">
+                                {{ $tickets->links('components.pagination.tailwind') }}
+                            </div>
                         </div>
                     </div>
                 </div>

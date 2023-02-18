@@ -13,7 +13,7 @@ class ManageTickets extends Component
 {
     use WithPerPagePagination, WithSorting, WithCachedRows;
 
-    public $search = '';
+    public $search = '', $deleteTicketId;
     public $filters = [
         'search' => '',
         'status' => '',
