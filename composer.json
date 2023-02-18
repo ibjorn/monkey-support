@@ -4,7 +4,10 @@
     "description": "The Laravel Framework.",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "livewire",
+        "ticket support",
+        "tall stack"
     ],
     "license": "MIT",
     "require": {
