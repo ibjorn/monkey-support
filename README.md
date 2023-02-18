@@ -18,7 +18,7 @@ A demo support ticket app, for practice purposes, with the following technologie
 2. Adjust config for your environment (at the least, only needs MySQL).
 3. For Docker, check Docker Compose section below before continuing.
 4. Run `composer install`.
-5. Run `npm install && npm run dev` (for dev purposes).
+5. Run `npm install && npm run dev` (for dev purposes, runs with hot reload). `npm run build` for production build.
 6. Once up and running, `php artisan migrate --seed` to populate database. Leave off `--seed` if you don't want dummy records.
 
 ### **Docker Compose**
