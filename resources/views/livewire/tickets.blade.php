@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="flex flex-col items-center max-w-lg mx-auto">
+                    <div class="flex flex-col items-center max-w-lg py-4 mx-auto">
                         <div class="max-w-lg mx-auto">
                             @if (!$addTicket)
                                 <x-button.primary wire:click="addTicket">
@@ -17,8 +17,7 @@
                                 </x-button.primary>
                             @endif
                         </div>
-                        <div
-                            class="w-full px-6 py-4 mt-6 overflow-hidden bg-white dark:bg-gray-800 sm:max-w-md sm:rounded-lg">
+                        <div class="w-full px-6 overflow-hidden bg-white dark:bg-gray-800 sm:max-w-md sm:rounded-lg">
 
                             @if ($addTicket || $updateTicket)
                                 <x-tickets.add-update :action="$addTicket ? 'submit' : 'update'" />
@@ -78,7 +77,7 @@
 
                                             <x-table.cell>
                                                 <div>
-                                                    <x-utility.badge :badgeColor="$ticket->status_color">
+                                                    <x-utility.badge :badgeColor="App\Enums\TicketStatus::color($ticket->status)">
                                                         {{ $ticket->status }}
                                                     </x-utility.badge>
                                                 </div>
@@ -140,7 +139,7 @@
                             </x-slot>
                         </x-table.body>
                         <div class="mt-4">
-                            {{ $tickets->links() }}
+                            {{ $tickets->links('components.pagination.tailwind') }}
                         </div>
                     </div>
                 </div>

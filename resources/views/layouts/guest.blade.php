@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.darkMode.on && 'dark'">
 
 <head>
     <meta charset="utf-8">
@@ -17,6 +17,17 @@
 </head>
 
 <body class="font-sans antialiased text-gray-900">
+    <div class="py-4 bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap items-center justify-end max-w-screen-xl px-4 mx-auto">
+            <div class="flex items-center pl-2 lg:order-2">
+                {{-- darkmode toggle --}}
+                <div class="flex items-center pr-2">
+                    <x-utility.dark-mode-toggle />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 dark:bg-gray-900 sm:justify-center sm:pt-0">
         <div>
             <a href="/">
@@ -29,6 +40,40 @@
             {{ $slot }}
         </div>
     </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('darkMode', {
+                init() {
+                    const colorMode = localStorage.getItem('dark')
+                    const preferredColorMode = window.matchMedia(
+                        '(prefers-color-scheme: dark)'
+                    ).matches
+
+                    if (colorMode === null) {
+                        localStorage.setItem('dark', preferredColorMode)
+                    }
+
+                    this.on = localStorage.getItem('dark') === 'true'
+                },
+
+                on: false,
+
+                changeColor() {
+                    this.on ?
+                        localStorage.setItem('dark', true) :
+                        localStorage.setItem('dark', false)
+                },
+
+                toggle() {
+                    this.on = !this.on
+                    this.changeColor()
+                },
+            })
+
+
+        })
+    </script>
 </body>
 
 </html>
