@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Support Monkey',
-            'email' => 'info@codingmonkeys.nl',
+            'email' => 'admin@monkey-support.local',
             'email_verified_at' => now(),
             'password' => Hash::make('bananas101'),
             'is_admin' => 1,

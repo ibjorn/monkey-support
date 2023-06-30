@@ -4,7 +4,7 @@
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],
-    "service": "cm-tickets.local",
+    "service": "monkey-support.local",
     "workspaceFolder": "/var/www/html",
     "customizations": {
         "vscode": {

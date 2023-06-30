@@ -21,7 +21,7 @@ Laravel Sail configured with Nginx and devcontainer.
 ### Access
 
 Admin:
-Username: as stipulated by requirements
+Username: admin@monkey-support.local
 Password: bananas101
 
 User:

@@ -18,7 +18,7 @@ services:
             - ${APP_SERVICE:-laravel.test}
         networks:
             - sail
-    cm-tickets.local:
+    monkey-support.local:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
