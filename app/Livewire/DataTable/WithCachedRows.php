@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\DataTable;
+namespace App\Livewire\DataTable;
 
 trait WithCachedRows
 {
@@ -13,7 +13,7 @@ trait WithCachedRows
 
     public function cache($callback)
     {
-        $cacheKey = $this->id;
+        $cacheKey = $this->getId();
 
         if ($this->useCache && cache()->has($cacheKey)) {
             return cache()->get($cacheKey);

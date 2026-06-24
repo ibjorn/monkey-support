@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
-use App\Http\Livewire\DataTable\WithSorting;
-use App\Http\Livewire\DataTable\WithCachedRows;
-use App\Http\Livewire\DataTable\WithPerPagePagination;
+use App\Livewire\DataTable\WithSorting;
+use App\Livewire\DataTable\WithCachedRows;
+use App\Livewire\DataTable\WithPerPagePagination;
 
 class ManageTickets extends Component
 {

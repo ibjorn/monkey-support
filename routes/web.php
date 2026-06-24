@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Livewire\Tickets;
-use App\Http\Livewire\ViewTicket;
-use App\Http\Livewire\ManageTickets;
+use App\Livewire\Tickets;
+use App\Livewire\ViewTicket;
+use App\Livewire\ManageTickets;
 use Illuminate\Support\Facades\Route;
 
 /*

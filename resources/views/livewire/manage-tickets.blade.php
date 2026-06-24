@@ -12,7 +12,7 @@
                     <div class="container flex flex-wrap mx-auto lg:flex-row">
 
                         <div class="flex items-center w-1/2">
-                            <x-input.text wire:model="filters.search" placeholder="Search ID / subject..."
+                            <x-input.text wire:model.live.debounce.300ms="filters.search" placeholder="Search ID / subject..."
                                 class="px-2 py-1 text-sm lg:px-3 lg:py-1.5" />
                             <x-button.secondary wire:click="resetFilters"
                                 class="ml-2 px-2 py-1 text-xs lg:px-3 lg:py-1.5" type="button">
@@ -29,7 +29,7 @@
                                 </label>
 
                                 <div class="mt-1 sm:col-span-2 sm:mt-0">
-                                    <x-input.select wire:model="filters.status" id="filter-status"
+                                    <x-input.select wire:model.live="filters.status" id="filter-status"
                                         class="min-w-min px-2 py-1 text-sm lg:px-3 lg:py-1.5">
                                         <option value="" disabled>Status...</option>
                                         @foreach (App\Enums\TicketStatus::statuses() as $key => $value)
@@ -46,7 +46,7 @@
                                 </label>
 
                                 <div class="mt-1 sm:col-span-2 sm:mt-0">
-                                    <x-input.select wire:model="perPage" id="per-page"
+                                    <x-input.select wire:model.live="perPage" id="per-page"
                                         class="min-w-min px-2 py-1 text-sm lg:px-3 lg:py-1.5">
                                         <option value="10">10</option>
                                         <option value="25">25</option>
