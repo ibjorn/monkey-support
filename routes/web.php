@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\Tickets;
 use App\Livewire\ViewTicket;
 use App\Livewire\ManageTickets;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage-tickets', ManageTickets::class)->name('manage-tickets');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
